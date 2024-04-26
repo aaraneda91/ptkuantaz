@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Resources\FichaCollection;
 use Illuminate\Support\Facades\Route;
 
 /*
