@@ -20,9 +20,16 @@ class BeneficioController extends Controller
             });
         $response = $response->groupBy('anio'); // se agrupan los beneficios por año
         
-        $response = $response->map(
+        $response = $response->map( // suma monto total
             function ($item) {
                 $item['monto_total'] = $item->sum('monto');
+                return $item;
+            }
+        );
+
+        $response = $response->map(
+            function ($item) {
+                $item['beneficios'] = $item->count();
                 return $item;
             }
         );
