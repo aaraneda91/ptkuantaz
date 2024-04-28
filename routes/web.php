@@ -1,6 +1,9 @@
 <?php
 
+use App\Http\Controllers\BeneficioController;
+use App\Http\Controllers\FichaController;
 use App\Http\Resources\FichaCollection;
+use App\Models\Ficha;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,4 +19,8 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
+});
+
+Route::group(['prefix' => 'api', 'namespace' => 'App\Http\Controllers'], function(){
+    Route::apiResource('beneficios',BeneficioController::class);
 });
