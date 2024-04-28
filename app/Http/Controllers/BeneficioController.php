@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Http;
 class BeneficioController extends Controller
 {
     function index() {
-        $response = Http::get('https://run.mocky.io/v3/399b4ce1-5f6e-4983-a9e8-e3fa39e1ea71');
+        $response = Http::get('https://run.mocky.io/v3/399b4ce1-5f6e-4983-a9e8-e3fa39e1ea71'); // endpoint beneficios
         $response = $response->collect();
         $response = collect($response['data']);
         $response = $response->map( // se obtiene año de la fecha
@@ -20,20 +20,13 @@ class BeneficioController extends Controller
             });
         $response = $response->groupBy('anio'); // se agrupan los beneficios por año
         
-        $response = $response->map( // suma monto total
+        $response = $response->map( // suma monto total; número beneficios
             function ($item) {
                 $item['monto_total'] = $item->sum('monto');
-                return $item;
-            }
-        );
-
-        $response = $response->map(
-            function ($item) {
                 $item['beneficios'] = $item->count();
                 return $item;
             }
         );
         return new BeneficioCollection($response);
-        //dd($response);
     }
 }
