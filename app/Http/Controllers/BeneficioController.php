@@ -6,9 +6,26 @@ use App\Http\Resources\BeneficioCollection;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
+use OpenApi\Annotations as OA;
+
+/**
+* @OA\Info(
+*      title="Endpoint para prueba Kuantaz", 
+*      version="1.0",
+* )
+*/
 
 class BeneficioController extends Controller
 {
+    /**
+     * @OA\Get(
+     *     path="/api/beneficios",
+     *     summary="Obtener lista de beneficios",
+     *     tags={"Beneficios"},
+     *     @OA\Response(response=200, description="Successful operation"),
+     *     @OA\Response(response=400, description="Invalid request")
+     * )
+     */
     function index() {
         $beneficios = Http::get('https://run.mocky.io/v3/399b4ce1-5f6e-4983-a9e8-e3fa39e1ea71'); // endpoint beneficios
         $beneficios = collect($beneficios['data']);

@@ -1,0 +1,26 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Endpoint para prueba Kuantaz",
+        "version": "1.0"
+    },
+    "paths": {
+        "/api/beneficios": {
+            "get": {
+                "tags": [
+                    "Beneficios"
+                ],
+                "summary": "Obtener lista de beneficios",
+                "operationId": "56e64cafbce35f1b68dac47452137199",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "400": {
+                        "description": "Invalid request"
+                    }
+                }
+            }
+        }
+    }
+}
