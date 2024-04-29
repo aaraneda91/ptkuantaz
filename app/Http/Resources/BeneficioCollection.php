@@ -15,6 +15,7 @@ class BeneficioCollection extends ResourceCollection
     public function toArray(Request $request): array
     {
         return [
+            'code' => 200,
             'data' => $this->collection
             ];
     }
