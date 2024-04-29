@@ -1,0 +1,19 @@
+{
+	"info": {
+		"_postman_id": "92a7da36-94d7-4680-a013-6997aa364c52",
+		"name": "kuantaz",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "34562936"
+	},
+	"item": [
+		{
+			"name": "listado beneficios",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "http://ptkuantaz.test/api/beneficios"
+			},
+			"response": []
+		}
+	]
+}
