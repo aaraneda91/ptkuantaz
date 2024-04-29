@@ -34,12 +34,18 @@ class BeneficioController extends Controller
                 }
                 return $item;
             });
+        $beneficios = $beneficios->reject(
+            function ($item, $Key) use ($filtros) {
+                foreach ($filtros as $filtro) {
+                    return $item['monto'] > $filtro['max'] || $item['monto'] < $filtro['min'];
+                }
+            }
+        );
         $beneficios = $beneficios->groupBy('anio'); // se agrupan los beneficios por año
-        
         $beneficios = $beneficios->map( // suma monto total; número beneficios
             function ($item) {
-                $item['monto_total'] = $item->sum('monto');
                 $item['beneficios'] = $item->count();
+                $item['monto_total'] = $item->sum('monto');
                 return $item;
             }
         );
