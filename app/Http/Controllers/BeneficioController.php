@@ -44,8 +44,9 @@ class BeneficioController extends Controller
         $beneficios = $beneficios->groupBy('anio'); // se agrupan los beneficios por año
         $beneficios = $beneficios->map( // suma monto total; número beneficios
             function ($item) {
-                $item['beneficios'] = $item->count();
-                $item['monto_total'] = $item->sum('monto');
+                $item = collect($item);
+                $item->prepend($item->count(),'beneficios');
+                $item->prepend($item->sum('monto'),'monto_total');
                 return $item;
             }
         );
